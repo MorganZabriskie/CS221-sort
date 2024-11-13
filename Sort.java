@@ -1,11 +1,12 @@
 import java.util.Comparator;
+import java.util.LinkedList;
 
 /**
  * Class for sorting lists that implement the IndexedUnsortedList interface,
  * using ordering defined by class of objects in list or a Comparator.
  * As written uses Mergesort algorithm.
  *
- * @author CS221
+ * @author CS221, mzabriskie
  */
 public class Sort
 {	
@@ -69,6 +70,31 @@ public class Sort
 	private static <T extends Comparable<T>> void mergesort(IndexedUnsortedList<T> list)
 	{
 		// TODO: Implement recursive mergesort algorithm 
+		if(list.size() > 1) {
+			int mid = list.size() / 2;
+			WrappedDLL<T> leftList = new WrappedDLL<T>();
+			WrappedDLL<T> rightList = new WrappedDLL<T>();
+
+			// add first half to leftList
+			for(int i = 0; i < mid; i++) {
+				leftList.add(i, list.get(i));
+			}
+			mergesort(leftList);
+
+			// add second half to rightList
+			for(int i = mid; i < list.size(); i++) {
+				rightList.add(i, list.get(i));
+			}
+			mergesort(rightList);
+		} else {
+			
+		}
+		
+		// base case
+
+		//recursive call
+
+		//combine results and return
 	}
 		
 	/**
