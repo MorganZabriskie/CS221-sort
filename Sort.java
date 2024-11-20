@@ -70,6 +70,7 @@ public class Sort
 	private static <T extends Comparable<T>> void mergesort(IndexedUnsortedList<T> list)
 	{
 		// TODO: Implement recursive mergesort algorithm 
+		// split list into right and left halves
 		if(list.size() > 1) {
 			int mid = list.size() / 2;
 			WrappedDLL<T> leftList = new WrappedDLL<T>();
@@ -78,23 +79,36 @@ public class Sort
 			// add first half to leftList
 			for(int i = 0; i < mid; i++) {
 				leftList.add(i, list.get(i));
+				list.remove(i);
 			}
 			mergesort(leftList);
 
 			// add second half to rightList
 			for(int i = mid; i < list.size(); i++) {
 				rightList.add(i, list.get(i));
+				list.remove(i);
 			}
 			mergesort(rightList);
-		} else {
 
-		}
-		
-		// base case
+			// sort two lists back into main list
+			while(!leftList.isEmpty() && !rightList.isEmpty()) {
+				if(rightList.get(0).compareTo(leftList.get(0)) < 0) {
+					list.addToRear(rightList.get(0));
+					rightList.remove(0);
+				} else if (rightList.get(0).compareTo(leftList.get(0)) > 0) {
+					list.addToRear(leftList.get(0));
+					leftList.remove(0);
+				} else {
+					list.addToRear(rightList.get(0));
+					rightList.remove(0);
+				}
+			}
 
-		//recursive call
-
-		//combine results and return
+			if(!rightList.isEmpty()) {
+				list.addToRear(rightList.get(0));
+				rightList.remove(0);
+			}
+		} 
 	}
 		
 	/**
@@ -113,7 +127,45 @@ public class Sort
 	private static <T> void mergesort(IndexedUnsortedList<T> list, Comparator<T> c)
 	{
 		// TODO: Implement recursive mergesort algorithm using Comparator
+		if(list.size() > 1) {
+			int mid = list.size() / 2;
+			WrappedDLL<T> leftList = new WrappedDLL<T>();
+			WrappedDLL<T> rightList = new WrappedDLL<T>();
 
+			// add first half to leftList
+			for(int i = 0; i < mid; i++) {
+				leftList.add(i, list.get(i));
+				list.remove(i);
+			}
+			mergesort(leftList, c);
+
+			// add second half to rightList
+			for(int i = mid; i < list.size(); i++) {
+				rightList.add(i, list.get(i));
+				list.remove(i);
+			}
+			mergesort(rightList, c);
+
+			// sort two lists back into main list
+			while(!leftList.isEmpty() && !rightList.isEmpty()) {
+				if(compare(rightList.get(0), leftList.get(0)) < 0) {
+					list.addToRear(rightList.get(0));
+					rightList.remove(0);
+				} else if (compare(rightList.get(0), leftList.get(0)) > 0) {
+					list.addToRear(leftList.get(0));
+					leftList.remove(0);
+				} else {
+					list.addToRear(rightList.get(0));
+					rightList.remove(0);
+				}
+			}
+
+			if(!rightList.isEmpty()) {
+				list.addToRear(rightList.get(0));
+				rightList.remove(0);
+			}
+		} 
+	}
 	}
 	
 }
