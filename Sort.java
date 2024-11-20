@@ -108,6 +108,11 @@ public class Sort
 				list.addToRear(rightList.get(0));
 				rightList.remove(0);
 			}
+
+			if (!leftList.isEmpty()) {
+				list.addToRear(leftList.get(0));
+				leftList.remove(0);
+			}
 		} 
 	}
 		
@@ -148,10 +153,10 @@ public class Sort
 
 			// sort two lists back into main list
 			while(!leftList.isEmpty() && !rightList.isEmpty()) {
-				if(compare(rightList.get(0), leftList.get(0)) < 0) {
+				if(c.compare(rightList.get(0), leftList.get(0)) < 0) {
 					list.addToRear(rightList.get(0));
 					rightList.remove(0);
-				} else if (compare(rightList.get(0), leftList.get(0)) > 0) {
+				} else if (c.compare(rightList.get(0), leftList.get(0)) > 0) {
 					list.addToRear(leftList.get(0));
 					leftList.remove(0);
 				} else {
@@ -164,8 +169,11 @@ public class Sort
 				list.addToRear(rightList.get(0));
 				rightList.remove(0);
 			}
+
+			if (!leftList.isEmpty()) {
+				list.addToRear(leftList.get(0));
+				leftList.remove(0);
+			}
 		} 
 	}
-	}
-	
 }
