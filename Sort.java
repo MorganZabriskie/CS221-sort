@@ -84,7 +84,7 @@ public class Sort
 			mergesort(leftList);
 
 			// add second half to rightList
-			for(int i = mid; i < list.size(); i++) {
+			for(int i = 0; i < list.size(); i++) {
 				rightList.add(i, list.get(i));
 				list.remove(i);
 			}
@@ -145,7 +145,7 @@ public class Sort
 			mergesort(leftList, c);
 
 			// add second half to rightList
-			for(int i = mid; i < list.size(); i++) {
+			for(int i = 0; i < list.size(); i++) {
 				rightList.add(i, list.get(i));
 				list.remove(i);
 			}
