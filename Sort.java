@@ -1,5 +1,4 @@
 import java.util.Comparator;
-import java.util.LinkedList;
 
 /**
  * Class for sorting lists that implement the IndexedUnsortedList interface,
@@ -12,8 +11,7 @@ public class Sort
 {	
 	/**
 	 * Returns a new list that implements the IndexedUnsortedList interface. 
-	 * As configured, uses WrappedDLL. Must be changed if using 
-	 * your own IUDoubleLinkedList class. 
+	 * As configured, uses IUDoubleLinkedList class. 
 	 * 
 	 * @return a new list that implements the IndexedUnsortedList interface
 	 */
