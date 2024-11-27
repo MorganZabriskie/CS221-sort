@@ -80,10 +80,14 @@ public class Sort
 			mergesort(leftList);
 
 			// add second half to rightList
-			for(int i = 0; i < list.size(); i++) {
+			while(!list.isEmpty()) {
 				rightList.addToRear(list.removeFirst());
 			}
 			mergesort(rightList);
+
+			//System.out.println("Left list is: " + leftList.toString());
+			//System.out.println("Right list is: " + rightList.toString());
+			//System.out.println("List is: " + list.toString());
 
 			// sort two lists back into main list
 			while(!leftList.isEmpty() && !rightList.isEmpty()) {
@@ -96,13 +100,15 @@ public class Sort
 				}
 			}
 
-			if(!rightList.isEmpty()) {
+			while(!rightList.isEmpty()) {
 				list.addToRear(rightList.removeFirst());
 			}
 
-			if (!leftList.isEmpty()) {
+			while(!leftList.isEmpty()) {
 				list.addToRear(leftList.removeFirst());
 			}
+
+			//System.out.println("List after merge is: " + list.toString());
 		} 
 	}
 		
@@ -133,7 +139,7 @@ public class Sort
 			mergesort(leftList, c);
 
 			// add second half to rightList
-			for (int i = 0; i < list.size(); i++) {
+			while (!list.isEmpty()) {
 				rightList.addToRear(list.removeFirst());
 			}
 			mergesort(rightList, c);
@@ -149,11 +155,11 @@ public class Sort
 				}
 			}
 
-			if(!rightList.isEmpty()) {
+			while(!rightList.isEmpty()) {
 				list.addToRear(rightList.removeFirst());
 			}
 
-			if (!leftList.isEmpty()) {
+			while(!leftList.isEmpty()) {
 				list.addToRear(leftList.removeFirst());
 			}
 		} 
